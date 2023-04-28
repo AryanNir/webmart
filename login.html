@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Log In / Sign Up</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css"
+    />
+    <link rel="stylesheet" href="./css/login.css" />
+  </head>
+  <body>
+    <div class="delay-1500"></div>
+    <div class="section">
+      <div class="container">
+        <div class="row full-height justify-content-center">
+          <div class="col-12 text-center align-self-center py-5">
+            <div class="section pb-5 pt-5 pt-sm-2 text-center">
+              <h6 class="mb-0 pb-3">
+                <span>Log In </span><span>Sign Up</span>
+              </h6>
+              <input
+                class="checkbox"
+                type="checkbox"
+                id="reg-log"
+                name="reg-log"
+              />
+              <label for="reg-log"></label>
+              <div class="card-3d-wrap mx-auto">
+                <div class="card-3d-wrapper">
+                  <div class="card-front">
+                    <div class="center-wrap">
+                      <div class="section text-center">
+                        <h4 class="mb-4 pb-3">Log In</h4>
+                        <div class="form-group">
+                          <input
+                            type="email"
+                            name="loginemail"
+                            class="form-style"
+                            placeholder="Your Email"
+                            id="loginemail"
+                            autocomplete="off"
+                          />
+                          <i class="input-icon uil uil-at"></i>
+                        </div>
+                        <div class="form-group mt-2">
+                          <input
+                            type="password"
+                            name="loginpass"
+                            class="form-style"
+                            placeholder="Your Password"
+                            id="loginpass"
+                            autocomplete="off"
+                          />
+                          <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        <!-- <a href="#" class="btn mt-4">submit</a> -->
+                        <button type="button" id ="submitDatalogin" name="submitDatalogin" class="btn mt-4">Submit</button>
+                        <p class="mb-0 mt-4 text-center">
+                          
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-back">
+                    <div class="center-wrap">
+                      <div class="section text-center">
+                        <h4 class="mb-4 pb-3">Sign Up</h4>
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            name="regname"
+                            class="form-style"
+                            placeholder="Your Full Name"
+                            id="regname"
+                            autocomplete="off"
+                          />
+                          <i class="input-icon uil uil-user"></i>
+                        </div>
+                        <div class="form-group mt-2">
+                          <input
+                            type="email"
+                            name="regemail"
+                            class="form-style"
+                            placeholder="Your Email"
+                            id="regemail"
+                            autocomplete="off"
+                          />
+                          <i class="input-icon uil uil-at"></i>
+                        </div>
+                        <div class="form-group mt-2">
+                          <input
+                            type="password"
+                            name="regpass"
+                            class="form-style"
+                            placeholder="Your Password"
+                            id="regpass"
+                            autocomplete="off"
+                          />
+                          <i class="input-icon uil uil-lock-alt"></i>
+                        </div>
+                        <!-- <a href="#" class="btn mt-4">submit</a> -->
+                        <button type="button" id ="submitDatareg" name="submitDatareg" class="btn mt-4">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- partial -->
+  </body>
+</html>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+  import { getDatabase,set,ref,update } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCfF44pWkD331j9hQ12McOJvaA5N86FoWw",
+    authDomain: "webmartlogin.firebaseapp.com",
+    projectId: "webmartlogin",
+    storageBucket: "webmartlogin.appspot.com",
+    messagingSenderId: "967506219428",
+    appId: "1:967506219428:web:f49be8d0632cefe6acf131"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const database = getDatabase(app);
+  
+  submitDatareg.addEventListener('click',(e) => {
+    // var email = document.getElementById('logemail1').value;
+    // var password = document.getElementById('logpass1').value;
+    var email = document.getElementById('regemail').value;
+    var password = document.getElementById('regpass').value;
+    var tempname=document.getElementById('regname').value;
+    createUserWithEmailAndPassword(auth, email, password,tempname)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    set(ref(database, 'users/' + user.uid), {
+    username: tempname,
+    email: email,
+    password : password
+    // profile_picture : imageUrl
+  }).then(() => {
+  // Data saved successfully!
+  alert('user created successfully');
+  // localStorage.setItem('name',tempname);
+})
+.catch((error) => {
+  // The write failed...
+  alert(error);
+});
+    
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage);
+    // ..
+  });
+  })
+  submitDatalogin.addEventListener('click',(e) => {
+    // var email = document.getElementById('regemail').value;
+    // var password = document.getElementById('regpass').value;
+    var email = document.getElementById('loginemail').value;
+    var password = document.getElementById('loginpass').value;
+    
+    
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    var lgDate=new Date();
+    update(ref(database, 'users/' + user.uid), {
+    // username: name,
+    last_login : lgDate,
+    // profile_picture : imageUrl
+  }).then(() => {
+  // Data saved successfully!
+    
+  alert('user logged in successfully');
+  // localStorage.setItem('name',tempname);
+  
+    
+    // var testing123=document.getElementById('regname').value;
+    
+
+  window.location='index2.html';
+
+})
+.catch((error) => {
+  // The write failed...
+
+  alert(error);
+});
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage);
+  });
+  signOut(auth).then(() => {
+  // Sign-out successful.
+}).catch((error) => {
+  // An error happened.
+});
+
+  });
+
+  
+</script>
