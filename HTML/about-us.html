@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="../Images/logo.jpeg" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>About Us</title>
+    <link rel="stylesheet" href="../css/about-me.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/preloader.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="../js/preloader.js"></script>
+  </head>
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+    .about {
+      height: 100%;
+      margin: 0 10% 0 10%;
+    }
+    section {
+      font-family: "Montserrat";
+      height: 100%;
+    }
+    h1,
+    h2 {
+      text-align: center;
+    }
+
+    input,
+    label {
+      display: block;
+      width: 100%;
+    }
+    label {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    textarea {
+      max-width: 100%;
+      width: 100%;
+      height: 100px;
+    }
+    form {
+      padding: 30px;
+      box-shadow: 2px 1px 10px 1px rgba(0, 0, 0, 0.6);
+    }
+    input {
+      height: 25px;
+      padding: 2px;
+      margin-bottom: 10px;
+    }
+    nav {
+      position: relative;
+    }
+    /* .bg {
+      /* background-image: url("../Images/pp.jfif"); */
+      /* background-repeat: no-repeat;
+      background-size: contain;
+      height: 500px;
+      width: 500px;
+      margin: 0 auto; */
+    /* } */ */
+    ol > li {
+      padding: 30px;
+      margin: 0 0 30px 0;
+      border: 1px solid black;
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+      border-radius: 7px;
+    }
+    .portfolio {
+      margin: 0 5% 0 5%;
+    }
+    .contact {
+      margin: 0 15% 0 15%;
+    }
+  </style>
+  <body>
+    <div class="se-pre-con"></div>
+    <nav>
+      <ul>
+        <li class="primary-nav">
+          <img src="../Images/logo.jpeg" alt="logo" />
+          <a href="../index.html">WEBMART</a>
+        </li>
+        <li class="secondary-nav">
+          <a href="../HTML/checkout.html">
+            <i class="fas fa-shopping-cart"></i> CART
+          </a>
+        </li>
+        <li class="secondary-nav"><a href="../HTML/shoes.html">SHOES</a></li>
+        <li class="secondary-nav"><a href="../HTML/acc.html">ACCESSORIES</a></li>
+        
+      </ul>
+    </nav>
+    <section class="about">
+      <h1>About Us</h1>
+      <div class="bg"></div>
+      <h2>Mehul Pathak and Aryan Niranjan</h2>
+      <p>
+        Undergrad students who are extremely passionate in web and app
+        development. We work with CSS, HTML, JavaScript, PHP, and mySQL to create
+        beautiful, functional web pages for our clients. As well as making
+        websites, we enjoy playing video games and making apps for mobile.
+        
+      </p>
+      <br />
+      <!-- <h3>Hobbies</h3>
+      <ul>
+        <li>Gaming</li>
+        <li>Music</li>
+        <li>Swimming</li>
+        <li>Reading books</li>
+        <li>Skyiving</li>
+      </ul> -->
+    </section>
+    
+             
+            
+
+        
+      </div>
+    </section>
+    <section class="contact">
+      <h1>Contact Us</h1>
+      <p>
+        Items marked as "<strong style="font-size: 20px"> * </strong>" are
+        required
+      </p>
+      <form action="">
+        <label for="Name"
+          >Full Name*
+          <input type="text" name="" id="" placeholder="Name" required
+        /></label>
+        <label for="Email"
+          >Email* <input type="email" name="" id="" placeholder="Email" required
+        /></label>
+
+        <label for="Phone"
+          >Phone <input type="tel" name="" id="" placeholder="Phone Number" />
+        </label>
+        <label for="Message"
+          >Message*<textarea
+            name="Message"
+            id=""
+            placeholder="Your Message"
+            required
+          ></textarea
+        ></label>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
+      <h3>
+        You can also
+        <a href="mailto:webmart@gmail.com" target="_blank">Email Us</a>
+      </h3>
+    </section>
+  </body>
+</html>
